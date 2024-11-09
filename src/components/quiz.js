@@ -83,33 +83,17 @@ export default function Quiz(){
   const [emailModalVisible, setEmailModalVisible] = useState(false);
   const [email, setEmail] = useState('');
 
-//   useEffect(() => {
-//     loadQuestion();
-//   }, [currentQuestion]);
-
-//   const loadQuestion = () => {
-//     // Logic to load the current question
-//   };
-
-//   useEffect( () => {
-//     console.log("emailModalVisible changed")
-//   }, [emailModalVisible])
 
   const submitQuiz = () => {
-    // console.log("Inside submitQuiz")
     const selectedOption = document.querySelector('input[name="answer"]:checked');
     if (selectedOption) {
-        // console.log("selectedOption is true")
       setScore(prevScore => prevScore + quizData[currentQuestion].options[selectedOption.value].score);
       setCurrentQuestion(prev => prev + 1);
-    //   console.log("currentQuestion + 1", currentQuestion + 1)
-    //   console.log("quizData.length: ", quizData.length)
       if (currentQuestion + 1 >= quizData.length) {
-        // console.log("setting email modal visible to true")
         setEmailModalVisible(true);
       }
     } else {
-        console.log("selected option does not exist")
+        console.warn("selected option does not exist")
     }
   };
 
